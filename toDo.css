@@ -37,3 +37,9 @@ body {
     justify-content: space-between;
     padding: 1em;
 }
+.taskDone {
+    text-decoration: line-through;
+}
+.taskBackground {
+    background-color: gray;
+}
