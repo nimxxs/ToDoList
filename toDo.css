@@ -13,12 +13,12 @@ body {
 .taskArea {
     border: 1px solid lightgray;
 }
-.taskTaps {
+.taskTabs {
     display: flex;
     border-bottom: 1px solid lightgray;
     position: relative;
 }
-.taskTaps div {
+.taskTabs div {
     padding: 1em;
 }
 
@@ -41,5 +41,9 @@ body {
     text-decoration: line-through;
 }
 .taskBackground {
-    background-color: gray;
+    background-color: rgb(192, 226, 255);
+}
+
+.taskTabs div {
+    cursor:pointer;
 }
