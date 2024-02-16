@@ -4,6 +4,27 @@
     font-weight: normal;
     font-style: normal;
 }
+/* portrait (세로모드), landscape (가로모드) */
+@media (max-width:767px) {
+    .inputArea {
+        width: 400px;
+    }
+    .taskArea {
+        width: 400px !important;
+    }
+    .taskTabs {
+        display: flex;
+        justify-content: center;
+    }
+    #underLine {
+        height: 4px;
+        background-color: rgba(13, 124, 168, 0.301);
+        width: 65px;
+        left: 100px;
+        top: 36px;
+        padding: 0px;
+    }
+}
 
 body {
     font-family: 'SOGANGUNIVERSITYTTF';
