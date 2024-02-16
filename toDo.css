@@ -1,4 +1,12 @@
+@font-face {
+    font-family: 'SOGANGUNIVERSITYTTF';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/SOGANGUNIVERSITYTTF.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
+    font-family: 'SOGANGUNIVERSITYTTF';
     margin:0;
     background-image: url("./image/blue.jpg");
     background-repeat: no-repeat;
@@ -9,41 +17,115 @@ body {
     background-color: white;
     min-height: 100vh;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-.taskArea {
+.container h1 {
+    margin: 20px 0;
+}
+
+/* inputArea */
+.inputArea {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+/* taskInput에 height를 줬는데 button에도 height가 먹히는 이유?
+    => 일단 flex 컨테이너 성질 때문인 거 같다. 동일한 컨테이너 내에 있기 때문에 교차축에서 taskInput의 높이에 맞춰질 수 있다.  */
+#taskInput {
+    width: 500px;
+    height: 50px;
     border: 1px solid lightgray;
+}
+#taskInput:focus {
+    outline: none;
+    border-color: rgba(13, 124, 168, 0.301);
+}
+#addButton {
+    width: 50px;
+    margin-left: 15px;
+    border: none;
+    background-color: rgba(13, 124, 168, 0.301);
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* taskArea */
+.taskArea {
+    /* border: 1px solid lightgray; */
+    width: 570px;
+    height: 40px;
 }
 .taskTabs {
     display: flex;
-    border-bottom: 1px solid lightgray;
+    align-items: center;
+    /* border-bottom: 1px solid lightgray; */
     position: relative;
+    height: 40px;
 }
 .taskTabs div {
     padding: 1em;
 }
+#taskBoard.notEmpty {
+    border: 3px solid rgba(13, 124, 168, 0.301);
+    padding: 5px;
+}
 
+/* 밑줄 */
 #underLine {
     height: 4px;
-    background-color: skyblue;
+    background-color: rgba(13, 124, 168, 0.301);
     position: absolute;
     width: 65px;
     left: 0px;
-    top: 52px;
+    top: 36px;
     padding: 0px;
 }
 
+/* 객체 */
 .task {
     display: flex;
     justify-content: space-between;
-    padding: 1em;
+    margin: 20px 0;
 }
-.taskDone {
-    text-decoration: line-through;
-}
-.taskBackground {
-    background-color: rgb(192, 226, 255);
+.task div:first-child {
+    /* border-bottom: 1px solid rgb(13, 124, 168); */
+    background-color: rgba(13, 124, 168, 0.301);
 }
 
+/* 완료된 객체 스타일 */
+.taskDone {
+    text-decoration: line-through;
+    background-color: white !important;
+}
+/* .taskBackground {
+    background-color: white;
+} */
+
+/* 탭메뉴 */
 .taskTabs div {
     cursor:pointer;
+}
+
+/* 버튼 스타일 */
+.CompleteButton {
+    background-color: transparent;
+    border: none;
+    margin-right: 10px;
+    color: rgb(13, 124, 168);
+    font-size: 20px;
+}
+.returnButton {
+    background-color: transparent;
+    border: none;
+    margin-right: 10px;
+    font-size: 18px;
+}
+.deleteButton {
+    background-color: transparent;
+    border: none;
+    color: red;
+    font-size: 20px;
 }

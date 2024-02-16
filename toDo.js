@@ -5,7 +5,11 @@ let taskList = [];
 let mode = 'all';
 let filterList = [];
 
-addButton.addEventListener("click", addTask);
+// addButton.addEventListener("click", addTask);
+addButton.addEventListener("click", function() {
+    addTask();
+    taskInput.value = "";
+});
 taskInput.addEventListener("focus", function() {
     taskInput.value = "";
 })
@@ -16,12 +20,11 @@ for(let i=1; i<tabs.length; i++){
     });
 }
 
-
-
 // Enter 키 입력
 function enterKey(event) {
     if(event.key === "Enter"){
         addTask();
+        taskInput.value = "";
     }
 }
 
@@ -63,10 +66,10 @@ function render() {
             resultHTML += `<div class="${completeBG}">
             <div class="taskDone">${list[i].taskContent}</div>
             <div>
-                <button onclick="toggleComplete('${list[i].id}')">
+                <button onclick="toggleComplete('${list[i].id}')" class="returnButton">
                 <i class="fas fa-undo"></i>
                 </button>
-                <button onclick="deleteTask('${list[i].id}')">
+                <button onclick="deleteTask('${list[i].id}')" class="deleteButton">
                 <i class="far fa-trash-alt"></i>
                 </button>
             </div>
@@ -75,17 +78,27 @@ function render() {
             resultHTML += `<div class="${completeBG}">
             <div>${list[i].taskContent}</div>
             <div>
-                <button onclick="toggleComplete('${list[i].id}')">
+                <button onclick="toggleComplete('${list[i].id}')" class="CompleteButton">
                 <i class="far fa-check-circle"></i>
                 </button>
-                <button onclick="deleteTask('${list[i].id}')">
+                <button onclick="deleteTask('${list[i].id}')" class="deleteButton">
                 <i class="far fa-trash-alt"></i>
                 </button>
             </div>
         </div>`;
         }
     }
-    document.getElementById("taskBoard").innerHTML = resultHTML;
+    // document.getElementById("taskBoard").innerHTML = resultHTML;
+
+    // taskBoard의 내용 유무에 따른 스타일 적용을 위해 코드 수정
+    const taskBoard = document.getElementById("taskBoard");
+    taskBoard.innerHTML = resultHTML;
+
+    if(taskBoard.innerHTML.trim() === "") {
+        taskBoard.classList.remove("notEmpty");
+    } else {
+        taskBoard.classList.add("notEmpty");
+    }
 }
 
 function toggleComplete(id) {
@@ -104,7 +117,7 @@ function filter(event) {
     if(event) {
         underLine.style.width = event.target.offsetWidth + "px";
         underLine.style.left = event.target.offsetLeft + "px";
-        underLine.style.top = event.target.offsetTop + (event.target.offsetHeight - 4) + "px";
+        underLine.style.top = event.target.offsetTop + (event.target.offsetHeight - 12) + "px";
     }
 
     // 누구를 클릭했는지 event에 담겨있음
